@@ -23,6 +23,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionText)
+                <ul>
+                    @foreach (var answer in item.Answers)
+                {
+                        <li>@Html.DisplayFor(modelAnswerItem => answer)</li>
+                    }
+                </ul>
             </td>            
         </tr>
 }
