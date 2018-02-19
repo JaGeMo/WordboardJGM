@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCWordBoard", "CCWordBoard\CCWordBoard.csproj", "{BC19E9CF-A233-435C-93C7-2D37589D2FAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC19E9CF-A233-435C-93C7-2D37589D2FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC19E9CF-A233-435C-93C7-2D37589D2FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC19E9CF-A233-435C-93C7-2D37589D2FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC19E9CF-A233-435C-93C7-2D37589D2FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C964BDB-4C7E-4CC7-9909-E0E90315A37F}
+	EndGlobalSection
+EndGlobal

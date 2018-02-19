@@ -1,0 +1,11 @@
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.deps.json
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.runtimeconfig.json
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.runtimeconfig.dev.json
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.dll
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.csprojResolveAssemblyReference.cache
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.csproj.CoreCompileInputs.cache
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.AssemblyInfoInputs.cache
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.AssemblyInfo.cs
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.pdb
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.dll
+C:\Users\Danie\source\repos\CCWordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.pdb
