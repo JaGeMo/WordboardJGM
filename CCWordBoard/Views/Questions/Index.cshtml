@@ -23,12 +23,20 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionText)
-                <ul>
-                    @foreach (var answer in item.Answers)
+                <fieldset>
+                    <ul>
+                        @foreach (var answer in item.Answers)
                 {
-                        <li>@Html.DisplayFor(modelAnswerItem => answer)</li>
-                    }
-                </ul>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="frage" value="@Html.DisplayFor(modelAnswerItem => answer)">
+                                @Html.DisplayFor(modelAnswerItem => answer)
+                            </label>
+                            
+                        </li>
+                        }
+                    </ul>
+                </fieldset>
             </td>            
         </tr>
 }
