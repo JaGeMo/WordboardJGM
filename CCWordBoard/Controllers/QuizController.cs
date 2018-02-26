@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CCWordBoard.Helper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CCWordBoard.Controllers
 {
@@ -15,6 +16,8 @@ namespace CCWordBoard.Controllers
         [HttpGet]
         public IActionResult SelectAnswers()
         {
+            QuizHelper.LoadDataFromFile(".//Data//Questions.txt");
+            
             return View();
         }
         
