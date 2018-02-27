@@ -12,6 +12,10 @@
     
     @if (Model != null && Model.Any())
     {
+        <div id="successRate"></div>
+        <div id="ratio"></div>
+        
+                                                                           
         foreach (var question in Model)
         {
             <div class="BlockQ" style="border: 1px solid #bdbdbd; width: 75%; border-radius: 4px; margin-top: 40px; background-color: #f0ffff; padding: 8px;">
@@ -42,7 +46,7 @@
         }
     
         <span id="countQuections" style="display: none;">@count.ToString()</span>
-        <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px;"><span class="glyphicon glyphicon-ok"></span> Submit Quiz </button>
+        <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px;"><span class="glyphicon glyphicon-ok"></span> Submit </button>
     }
 
 </div> <!-- END QUIZ --> 
@@ -81,20 +85,30 @@
                     success: function (response) {
 
                         console.log("response.result.length: " + response.result.length.toString());
-                        if (response.result.length > 0)  
-                        {  
+                        if (response.result.length > 0) {
+                          
+                            var l = 0;
                             for(var i = 0; i <response.result.length; i++ ) {
 
                                 if(response.result[i].isCorrect == true)  
                                 {  
-                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer.</div>');  
+                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer.</div>');
                                 }  
                                 else  
                                 {  
-                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The correct answer is <b>' + response.result[i].quizAnswerCorrect + '.</b></div>');  
+                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The correct answer is <b>' + response.result[i].quizAnswerCorrect + '.</b></div>');
+                                    l++;
                                 }  
                                 j++;  
-                            }  
+                            }
+                            
+                            if (l/j != 0) {
+                                $('#successRate').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b> &nbsp;Failed&nbsp;</b></div>');
+                                $('#ratio').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b>Failure ratio:&nbsp;' + ((l / (j - 1)) * 100).toString() + '</b>');
+                            } else {
+                                $('#successRate').html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> &nbsp;Passed&nbsp;</div>');
+                                $('#ratio').html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <b>Failure ratio:&nbsp; 0</b>');
+                            }
                         }  
                         else  
                         {  
