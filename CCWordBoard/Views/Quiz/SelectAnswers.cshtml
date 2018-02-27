@@ -1,8 +1,52 @@
-﻿@model TModel
+﻿@model IQueryable<CCWordBoard.ViewModel.QuizQuestionsVM>
 
 @{
     ViewBag.Title = "Questionnaire";
     Layout = "_SpecLayout";
+    int count = 1, countR = 0;  
 }
 
 <h2>Questionnaire</h2>
+
+
+
+<div class="Quiz">
+    
+    @if (Model != null && Model.Any())
+    {
+        foreach (var question in Model)
+        {
+            <div class="BlockQ" style="border: 1px solid #bdbdbd; width: 75%; border-radius: 4px; margin-top: 40px; background-color: #f0ffff; padding: 8px;">
+
+                <div class="Question" style="padding: 2%;">
+                    <span class="label label-warning"> @string.Format("{0}{1}.", "Q", count.ToString())</span>
+                    <span id="@string.Format("{0}{1}", "ID_Q", count.ToString())" style="display: none;">@question.VMQuizQuestionId.ToString()</span>
+                    <p style="display: inline; padding: 2%;" id="@string.Format("{0}{1}", "Q", count.ToString())">@question.VMQuizQuestionText</p>
+                </div>
+
+                <div class="Choices" style="margin-left: 8%; margin-bottom: 8%;">
+
+                @foreach (var choice in question.VMQuizAnswers)
+                {
+                    <label class="radio-inline">
+                        <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count.ToString())" id="@string.Format("{0}{1}", "inlineRadio", countR.ToString())" value="@choice.QuizAnswerText" style="margin-left: -16px;"> @choice.QuizAnswerText
+                    </label><br/>
+                    countR++;
+                }
+
+                </div>
+
+                <div id="@string.Format("{0}{1}{2}", "Ans", "Q", count.ToString())"></div>
+
+            </div>
+        
+            count++;
+        }
+    
+        
+        
+        <span id="countQuections" style="display: none;">@count.ToString()</span>
+        <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px;"><span class="glyphicon glyphicon-ok"></span> Submit Quiz </button>
+    }
+
+</div> <!-- END QUIZ --> 

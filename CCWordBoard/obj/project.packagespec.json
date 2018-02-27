@@ -1,13 +1,14 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/janm/Code/WordboardJGM/CCWordBoard/CCWordBoard.csproj",
+    "projectUniqueName": "D:\\projects\\Git\\CleanCode\\WordBoard\\CCWordBoard\\CCWordBoard.csproj",
     "projectName": "CCWordBoard",
-    "projectPath": "/Users/janm/Code/WordboardJGM/CCWordBoard/CCWordBoard.csproj",
-    "outputPath": "/Users/janm/Code/WordboardJGM/CCWordBoard/obj/",
+    "projectPath": "D:\\projects\\Git\\CleanCode\\WordBoard\\CCWordBoard\\CCWordBoard.csproj",
+    "outputPath": "D:\\projects\\Git\\CleanCode\\WordBoard\\CCWordBoard\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.0"

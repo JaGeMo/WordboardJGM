@@ -36,7 +36,7 @@ namespace CCWordBoard.Helper
                     {
                         var quizQuestion = new QuizQuestion();
                         quizQuestion.QuizQuestionId = ++quizQuestionIndex;
-                        quizQuestion.QuizQuestionText = line.Substring(1);
+                        quizQuestion.QuizQuestionText = System.String.Concat(line.Substring(1),"?");
                         _quizQuestions.Add(quizQuestion);
                     }
                     else
