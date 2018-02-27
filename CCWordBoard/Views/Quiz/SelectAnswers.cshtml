@@ -60,32 +60,33 @@
                 //count Questions  
                 var sel = $('#countQuections').text();  
   
-                console.log(sel);  
+                console.log("Test:" + sel);  
   
                 var resultQuiz = [], countQuestion = parseInt(sel), question = {}, j = 1;  
   
                 for (var i = 1; i < countQuestion; i++) {  
                     question = {  
-                        QuestionID: $('#ID_Q'+ i).text(),  
-                        QuestionText: $('#Q' + i).text(),  
-                        AnswerQ: $('input[name=inlineRadioOptions' + i + ']:checked').val()  
+                        QuizQuestionID: $('#ID_Q'+ i).text(),  
+                        QuizAnswerId: $('#Q' + i).text(),  
+                        QuizAnswerText: $('input[name=inlineRadioOptions' + i + ']:checked').val()  
                     }  
   
                     resultQuiz.push(question);  
                 }  
-  
+                
                 $.ajax({  
   
                     type: 'POST',  
-                    url: '@Url.Action("QuizTest", "Quizz")',  
+                    url: '@Url.Action("SelectAnswers", "Quiz")',  
                     data: { resultQuiz },  
   
-                    success: function (response) {  
-  
+                    success: function (response) {
+
+                        console.log("response.result.length: " + response.result.length.toString());
                         if (response.result.length > 0)  
                         {  
-                            for(var i = 0; i <response.result.length; i++ )  
-                            {  
+                            for(var i = 0; i <response.result.length; i++ ) {
+
                                 if(response.result[i].isCorrect == true)  
                                 {  
   
@@ -93,7 +94,7 @@
                                 }  
                                 else  
                                 {  
-                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The Good Answer is <b>' + response.result[i].AnswerQ + '</b></div>');  
+                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The Good Answer is <b>' + response.result[i].QuizAnswerCorrect + '</b></div>');  
                                 }  
                                 j++;  
                             }  
@@ -102,10 +103,6 @@
                         {  
                             alert("Something Wrong");  
                         }  
-  
-  
-                        //console.log(response.result.length);  
-  
                     },  
                     error: function (response) {  
   

@@ -1,8 +1,8 @@
 ﻿namespace CCWordBoard.Models
 {
-    public class QuizAnswer
+    public class QuizCorrectAnswer
     {
-        public int QuizAnswerId { get; set; }
+        public int QuizCorrectAnswerId { get; set; }
 
         public string QuizAnswerText { get; set; }
 
