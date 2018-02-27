@@ -51,82 +51,95 @@
 
 </div> <!-- END QUIZ --> 
 
-@section Scripts  
-{  
-    <script type="text/javascript">  
-  
-        $(document).ready(function () {  
-  
-            $('#SubmitQuiz').on('click', function () {  
-  
-                //count Questions  
-                var sel = $('#countQuections').text();  
-  
-                console.log("Test:" + sel);  
-  
-                var resultQuiz = [], countQuestion = parseInt(sel), question = {}, j = 1;  
-  
-                for (var i = 1; i < countQuestion; i++) {  
-                    question = {  
-                        QuizQuestionID: $('#ID_Q'+ i).text(),  
-                        QuizAnswerId: $('#Q' + i).text(),  
-                        QuizAnswerText: $('input[name=inlineRadioOptions' + i + ']:checked').val()  
-                    }  
-  
-                    resultQuiz.push(question);  
-                }  
-                
-                $.ajax({  
-  
-                    type: 'POST',  
-                    url: '@Url.Action("SelectAnswers", "Quiz")',  
-                    data: { resultQuiz },  
-  
-                    success: function (response) {
+@section Scripts
+{
+    <script type="text/javascript">
 
-                        console.log("response.result.length: " + response.result.length.toString());
-                        if (response.result.length > 0) {
-                          
-                            var l = 0;
-                            for(var i = 0; i <response.result.length; i++ ) {
+        $(document).ready(function() {
 
-                                if(response.result[i].isCorrect == true)  
-                                {  
-                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer.</div>');
-                                }  
-                                else  
-                                {  
-                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The correct answer is <b>' + response.result[i].quizAnswerCorrect + '.</b></div>');
-                                    l++;
-                                }  
-                                j++;  
-                            }
-                            
-                            if (l/j != 0) {
-                                $('#successRate').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b> &nbsp;Failed&nbsp;</b></div>');
-                                $('#ratio').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b>Failure ratio:&nbsp;' + ((l / (j - 1)) * 100).toString() + '</b>');
+            $('#SubmitQuiz').on('click',
+                function() {
+
+                    //count Questions  
+                    var sel = $('#countQuections').text();
+
+                    console.log("Test:" + sel);
+
+                    var resultQuiz = [], countQuestion = parseInt(sel), question = {}, j = 1;
+
+                    for (var i = 1; i < countQuestion; i++) {
+                        question = {
+                            QuizQuestionID: $('#ID_Q' + i).text(),
+                            QuizAnswerId: $('#Q' + i).text(),
+                            QuizAnswerText: $('input[name=inlineRadioOptions' + i + ']:checked').val()
+                        }
+
+                        resultQuiz.push(question);
+                    }
+
+                    for (var i = 0; i < resultQuiz.length; i++) {
+                        if (resultQuiz[i].QuizAnswerText == null) {
+                            $('#successRate').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b> &nbsp;Please enter choices for all questions .. &nbsp;</b></div>');
+                        }
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SelectAnswers", "Quiz")',
+                        data: { resultQuiz },
+
+                        success: function(response) {
+
+                            console.log("response.result.length: " + response.result.length.toString());
+                            if (response.result.length > 0) {
+
+                                var l = 0;
+                                for (var i = 0; i < response.result.length; i++) {
+
+                                    if (response.result[i].isCorrect == true) {
+                                        $('#AnsQ' + j)
+                                            .html(
+                                                '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer.</div>');
+                                    } else {
+                                        $('#AnsQ' + j).html(
+                                            '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The correct answer is <b>' +
+                                            response.result[i].quizAnswerCorrect +
+                                            '.</b></div>');
+                                        l++;
+                                    }
+                                    j++;
+                                }
+
+                                if (l / j != 0) {
+                                    $('#successRate')
+                                        .html(
+                                            '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b> &nbsp;Failed&nbsp;</b></div>');
+                                    $('#ratio').html(
+                                        '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b>&nbspFailure ratio:&nbsp;' +
+                                        ((l / (j - 1)) * 100).toString() +
+                                        '</b>');
+                                } else {
+                                    $('#successRate')
+                                        .html(
+                                            '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> &nbsp;Passed&nbsp;</div>');
+                                    $('#ratio').html(
+                                        '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <b>&nbspFailure ratio:&nbsp; 0</b>');
+                                }
                             } else {
-                                $('#successRate').html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> &nbsp;Passed&nbsp;</div>');
-                                $('#ratio').html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <b>Failure ratio:&nbsp; 0</b>');
+                                alert("Something Wrong");
                             }
-                        }  
-                        else  
-                        {  
-                            alert("Something Wrong");  
-                        }  
-                    },  
-                    error: function (response) {  
-  
-                    }  
-                });  
-  
-                console.log(resultQuiz);  
-  
-            });  
-  
-  
-  
-        });  
-  
-    </script>  
+                        },
+                        error: function(response) {
+
+                        }
+                    });
+
+                    console.log(resultQuiz);
+
+                });
+
+
+        });
+
+    </script>
 }
