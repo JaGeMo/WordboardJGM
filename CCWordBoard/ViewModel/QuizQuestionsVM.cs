@@ -5,8 +5,8 @@ namespace CCWordBoard.ViewModel
 {
         public class QuizQuestionsVM  
         {  
-            public int QuizQuestionId { get; set; }  
-            public string QuizQuestionText { get; set; }  
-            public  ICollection<QuizAnswersVM> QuizAnswers { get; set; }  
+            public int VMQuizQuestionId { get; set; }  
+            public string VMQuizQuestionText { get; set; }  
+            public ICollection<QuizAnswersVM> VMQuizAnswers { get; set; }  
         }
 }

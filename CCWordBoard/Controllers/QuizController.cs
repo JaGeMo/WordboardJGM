@@ -1,4 +1,8 @@
-﻿using CCWordBoard.Helper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CCWordBoard.Helper;
+using CCWordBoard.Models;
+using CCWordBoard.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CCWordBoard.Controllers
@@ -17,8 +21,27 @@ namespace CCWordBoard.Controllers
         public IActionResult SelectAnswers()
         {
             QuizHelper.LoadDataFromFile(".//Data//Questions.txt");
+            var quizQuestions = QuizHelper.GetAllQuizQuestions();
+            var rawQuizAnswers = QuizHelper.GetAllQuizAnswers();
             
-            return View();
+            IQueryable<QuizQuestionsVM> questionsInclAnswers = null;
+            
+            questionsInclAnswers = quizQuestions.Where(q => q.QuizQuestionId != null)
+                .Select(q => new QuizQuestionsVM
+                {
+                    VMQuizQuestionId = q.QuizQuestionId,
+                    VMQuizQuestionText = q.QuizQuestionText,
+                    VMQuizAnswers = rawQuizAnswers.Where(a => a.QuizQuestionId == q.QuizQuestionId)
+                        .Select(c => new QuizAnswersVM{
+                            QuizAnswerId = c.QuizAnswerId,
+                            QuizAnswerText = c.QuizAnswerText,
+                            QuizCorrectAnswer = c.QuizCorrectAnswer,
+                            QuizQuestionID = c.QuizQuestionId
+                        }).ToList()
+                }).AsQueryable();
+            
+            
+            return View(questionsInclAnswers);
         }
         
         // process answers
