@@ -15,8 +15,6 @@ namespace CCWordBoard
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            QuestionHelper.LoadQuestions(".\\Data\\Questions.txt");
         }
 
         public IConfiguration Configuration { get; }

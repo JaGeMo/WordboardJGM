@@ -8,8 +8,6 @@
 
 <h2>Questionnaire</h2>
 
-
-
 <div class="Quiz">
     
     @if (Model != null && Model.Any())
@@ -89,12 +87,11 @@
 
                                 if(response.result[i].isCorrect == true)  
                                 {  
-  
-                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer</div>');  
+                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer.</div>');  
                                 }  
                                 else  
                                 {  
-                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The Good Answer is <b>' + response.result[i].QuizAnswerCorrect + '</b></div>');  
+                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The correct answer is <b>' + response.result[i].quizAnswerCorrect + '.</b></div>');  
                                 }  
                                 j++;  
                             }  
