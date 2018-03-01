@@ -14,8 +14,7 @@
     {
         <div id="successRate"></div>
         <div id="ratio"></div>
-        
-                                                                           
+                                                                       
         foreach (var question in Model)
         {
             <div class="BlockQ" style="border: 1px solid #bdbdbd; width: 75%; border-radius: 4px; margin-top: 40px; background-color: #f0ffff; padding: 8px;">
@@ -49,24 +48,26 @@
         <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px;"><span class="glyphicon glyphicon-ok"></span> Submit </button>
     }
 
-</div> <!-- END QUIZ --> 
+</div> <!-- ending quiz --> 
 
+<!-- referring to _SpecLayout.cshtml -->
 @section Scripts
 {
     <script type="text/javascript">
 
         $(document).ready(function() {
 
-            $('#SubmitQuiz').on('click',
+            $('#SubmitQuiz').on('click', // click submit button
                 function() {
 
-                    //count Questions  
+                    //count questions  
                     var sel = $('#countQuections').text();
 
-                    console.log("Test:" + sel);
+                        console.log("Test:" + sel);
 
                     var resultQuiz = [], countQuestion = parseInt(sel), question = {}, j = 1;
-
+                    
+                    // store answers temporarily
                     for (var i = 1; i < countQuestion; i++) {
                         question = {
                             QuizQuestionID: $('#ID_Q' + i).text(),
@@ -76,13 +77,15 @@
 
                         resultQuiz.push(question);
                     }
-
+                    
+                    // not enough answers provided
                     for (var i = 0; i < resultQuiz.length; i++) {
                         if (resultQuiz[i].QuizAnswerText == null) {
                             $('#successRate').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b> &nbsp;Please enter choices for all questions .. &nbsp;</b></div>');
                         }
                     }
-
+                    
+                    // send asynchronous POST request to QuizController and add/modify appropriate <div> tags
                     $.ajax({
                         type: 'POST',
                         url: '@Url.Action("SelectAnswers", "Quiz")',
@@ -117,7 +120,7 @@
                                     $('#ratio').html(
                                         '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><b>&nbspFailure ratio:&nbsp;' +
                                         ((l / (j - 1)) * 100).toString() +
-                                        '</b>');
+                                        '%</b>');
                                 } else {
                                     $('#successRate')
                                         .html(

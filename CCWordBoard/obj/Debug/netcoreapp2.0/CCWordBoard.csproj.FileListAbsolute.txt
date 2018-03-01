@@ -1,0 +1,10 @@
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.deps.json
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.runtimeconfig.json
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.runtimeconfig.dev.json
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.dll
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\bin\Debug\netcoreapp2.0\CCWordBoard.pdb
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.csproj.CoreCompileInputs.cache
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.AssemblyInfoInputs.cache
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.AssemblyInfo.cs
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.dll
+D:\projects\Git\CleanCode\WordBoard\CCWordBoard\obj\Debug\netcoreapp2.0\CCWordBoard.pdb

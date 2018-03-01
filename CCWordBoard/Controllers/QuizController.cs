@@ -56,8 +56,8 @@ namespace CCWordBoard.Controllers
                 QuizCorrectAnswerVM result = correctQuizAnswers.Where(a => a.QuizQuestionId == answer.QuizQuestionID ).Select(a => new QuizCorrectAnswerVM() 
                 {  
                     QuizQuestionID  = a.QuizQuestionId,
-                    QuizAnswerCorrect = a.QuizAnswerText,  
-                    isCorrect = (answer.QuizAnswerText).Equals(a.QuizAnswerText) 
+                    QuizAnswerCorrect = a.QuizCorrectAnswerText,  
+                    isCorrect = (answer.QuizAnswerText).Equals(a.QuizCorrectAnswerText) 
                     
                 }).FirstOrDefault();  
   

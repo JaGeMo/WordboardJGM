@@ -28,8 +28,6 @@ namespace CCWordBoard.Helper
         {
             return _quizCorrectAnswers;
         }
-
-        
         
         public static void LoadDataFromFile(String filename)
         {
@@ -59,7 +57,7 @@ namespace CCWordBoard.Helper
                         
                         var quizCorrectAnswer = new QuizCorrectAnswer();
                         quizCorrectAnswer.QuizCorrectAnswerId = quizAnswer.QuizAnswerId;
-                        quizCorrectAnswer.QuizAnswerText = quizAnswer.QuizAnswerText;
+                        quizCorrectAnswer.QuizCorrectAnswerText = quizAnswer.QuizAnswerText;
                         quizCorrectAnswer.QuizQuestionId = quizAnswer.QuizQuestionId;
                         _quizCorrectAnswers.Add(quizCorrectAnswer);
                     }
@@ -75,7 +73,7 @@ namespace CCWordBoard.Helper
             }
             catch (Exception ex)
             {
-                //TODO 
+                //ToDo 
             }
         }
     }
