@@ -66,13 +66,5 @@ namespace CCWordBoard.Controllers
   
             return Json(new { result = finalResultQuiz });  
         }
-
-        // return result string for output
-//        [HttpPost]
-//        public IActionResult QuizTest()
-//        {
-//            return Json( )    
-//        }
-        
     }
 }

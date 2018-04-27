@@ -28,7 +28,7 @@ namespace CCWordBoard.Helper
         {
             return _quizCorrectAnswers;
         }
-        
+        // separate read from processing/parsing
         public static void LoadDataFromFile(String filename)
         {
             try
